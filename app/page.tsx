@@ -1,9 +1,9 @@
-import Header from "@/components/Header";
-import Loading from "@/components/loading";
+import Header from "@/components/layouts/Header";
+import Loading from "@/app/loading";
 import dynamic from "next/dynamic";
 
 export default function Home() {
-  const LandingPage = dynamic(() => import("@/components/LandingPage"), {
+  const LandingPage = dynamic(() => import("@/components/ui/LandingPage"), {
     loading: () => <Loading />,
   });
   return (
