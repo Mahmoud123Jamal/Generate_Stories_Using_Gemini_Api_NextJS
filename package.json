@@ -10,19 +10,26 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.36.2",
+    "@neondatabase/serverless": "^1.0.2",
+    "axios": "^1.13.2",
     "daisyui": "^5.5.14",
+    "dotenv": "^17.2.3",
+    "drizzle-orm": "^0.45.1",
     "next": "16.0.10",
     "react": "19.2.1",
-    "react-dom": "19.2.1"
+    "react-dom": "19.2.1",
+    "react-icons": "^5.5.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "drizzle-kit": "^0.31.8",
     "eslint": "^9",
     "eslint-config-next": "16.0.10",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   },
   "browserslist": "> 1%"
