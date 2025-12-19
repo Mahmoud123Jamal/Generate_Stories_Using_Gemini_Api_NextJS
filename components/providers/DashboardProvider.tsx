@@ -1,5 +1,10 @@
+"use client";
 import React from "react";
-import AppSideBar from "../ui/AppSideBar";
+import dynamic from "next/dynamic";
+
+const AppSideBar = dynamic(() => import("@/components/ui/AppSideBar"), {
+  ssr: false,
+});
 
 type Props = {
   children: React.ReactNode;
