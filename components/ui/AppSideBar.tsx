@@ -27,6 +27,10 @@ const navItems = [
     tooltip: "Settings",
   },
 ];
+const titles: Record<string, string> = {
+  "/dashboard": "Dashboard",
+  "/dashboard/add-new-story": "Create Story",
+};
 type AppSideBarProps = {
   children: React.ReactNode;
 };
@@ -47,7 +51,9 @@ function AppSideBar({ children }: AppSideBarProps) {
             <TbLayoutSidebarRightExpandFilled className="my-1.5 inline-block size-6 text-white " />
           </label>
 
-          <div className=" text-white">Dashboard</div>
+          <h1 className=" text-white text-2xl font-extra-bold">
+            {titles[pathname] || "Dashboard"}
+          </h1>
           <div className="mr-2 bg-white rounded-full flex place-content-center size-10">
             <UserButton />
           </div>
