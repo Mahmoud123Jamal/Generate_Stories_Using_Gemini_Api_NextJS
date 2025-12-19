@@ -36,10 +36,10 @@ function StoryForm() {
 
   return (
     <>
-      <div className="h-screen flex place-content-center mt-3">
+      <div className="h-screen flex place-content-center mt-3 ">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="max-w-7xl mx-auto p-6 space-y-4 bg-white shadow rounded  overflow-y-auto "
+          className="w-[90%] lg:w-2/3  mx-auto p-6 space-y-4 bg-white shadow rounded  overflow-y-auto scrollbar-hide no-scrollbar"
         >
           {/* Story Subject */}
           <div>
@@ -48,7 +48,8 @@ function StoryForm() {
             </label>
             <textarea
               {...register("subject")}
-              className="textarea text-xl textarea-warning w-full px-3 py-2 rounded overflow-x-hidden overflow-y-auto whitespace-pre-wrap wrap-break-words"
+              className="textarea text-xl textarea-warning w-full px-3 py-2 rounded overflow-y-auto whitespace-pre-wrap wrap-break-words scrollbar-hide no-scrollbar resize-none placeholder:text-orange-500 placeholder:caret-orange-500 text-orange-500
+"
               placeholder="Enter story subject"
               rows={4}
               cols={40}
