@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FiZap } from "react-icons/fi";
@@ -12,7 +11,7 @@ function StoryList() {
   const [stories, setStories] = useState([]);
 
   const handleNewStory = () => {
-    router.push("/create-story");
+    router.push("/dashboard/add-new-story");
   };
   return (
     <div className="mt-1 w-full ">
