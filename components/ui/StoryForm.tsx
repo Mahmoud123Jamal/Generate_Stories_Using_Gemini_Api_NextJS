@@ -5,11 +5,12 @@ import { useForm, Resolver } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { STORY_TYPES, AGE_GROUPS, StoryFormValues } from "@/types/StoryType";
 import { storySchema } from "@/lib/validators";
+import { useRouter } from "next/navigation";
 
 function StoryForm() {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
-
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -27,8 +28,27 @@ function StoryForm() {
   const onSubmit = async (data: StoryFormValues) => {
     setLoading(true);
     try {
-      //  API Logic
+      const response = await fetch("/api/generate-stories", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      console.log("Sending data:", data);
+
+      const result = await response.json();
+
+      if (response.ok) {
+        console.log("Story generated:", result);
+        router.push("/storys");
+      } else {
+        console.error("Server Error:", result);
+        alert("Error generating story: " + (result.error || "Unknown error"));
+      }
+
       reset();
+    } catch (err: any) {
+      console.error("Network Error:", err);
+      alert("Network or unknown error: " + (err.message || err));
     } finally {
       setLoading(false);
     }
