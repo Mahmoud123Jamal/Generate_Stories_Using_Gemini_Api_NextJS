@@ -39,3 +39,32 @@ export type StoryFormValues = {
   type: StoryType;
   ageGroup: AgeGroup;
 };
+
+export type Story = {
+  id: number;
+  storyId: string;
+  imageUrl: string | null;
+  content: unknown;
+  email: string | null;
+};
+
+export type storyTable = StoryFormValues & Story;
+
+export type previewStory = Omit<Story, "content" | "id" | "email"> & {
+  content: {
+    story: {
+      title: string;
+      description: string;
+      type: StoryType;
+      ageGroup: AgeGroup;
+      totalPages?: number;
+      imagePrompt?: string;
+      pages?: {
+        pageNumber: number;
+        title: string;
+        content: string;
+        imagePrompt: string;
+      }[];
+    };
+  };
+} & StoryFormValues;
