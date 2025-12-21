@@ -10,6 +10,14 @@ const nextConfig: NextConfig = {
       "daisyui",
     ],
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "firebasestorage.googleapis.com",
+      },
+    ],
+  },
   serverExternalPackages: ["@neondatabase/serverless"],
 };
 
