@@ -1,21 +1,31 @@
 import db from "@/db";
 import { usersTable } from "@/db/schema";
-import { InsertUser, User } from "@/types/UserTable";
-import { eq } from "drizzle-orm";
+import { User } from "@/types/UserTable";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
-  const { email, name } = await req.json();
-  const user: User[] = await db
-    .select()
-    .from(usersTable)
-    .where(eq(usersTable.email, email));
-  if (user.length === 0) {
-    const insertedUser: InsertUser[] = await db
+  try {
+    const { email, name } = await req.json();
+
+    if (!email || !name) {
+      return NextResponse.json({ error: "Missing data" }, { status: 400 });
+    }
+
+    const result: User[] = await db
       .insert(usersTable)
       .values({ email, name })
+      .onConflictDoUpdate({
+        target: usersTable.email,
+        set: { name: name },
+      })
       .returning();
-    return NextResponse.json({ insertedUser });
+
+    return NextResponse.json(result[0]);
+  } catch (error) {
+    console.error("Database Error:", error);
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 }
+    );
   }
-  return NextResponse.json({ user });
 }
