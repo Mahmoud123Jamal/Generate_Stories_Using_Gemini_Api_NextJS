@@ -4,7 +4,7 @@ import Banner from "@/components/ui/Banner";
 import { previewStory } from "@/types/StoryType";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-
+import Loader from "@/components/ui/loader";
 function Page() {
   const [stories, setStories] = useState<previewStory[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -23,11 +23,7 @@ function Page() {
     <div>
       <Banner />
 
-      {loading && (
-        <p className="text-center mt-6 text-lg font-medium">
-          Loading stories...
-        </p>
-      )}
+      {loading && <Loader />}
 
       {!loading && stories.length === 0 && (
         <p className="text-center mt-6 text-lg font-medium">No stories found</p>
