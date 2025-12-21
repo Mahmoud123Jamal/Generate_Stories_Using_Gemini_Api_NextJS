@@ -1,5 +1,6 @@
 import db from "@/db";
 import { storysTable } from "@/db/schema";
+import { storyTable } from "@/types/StoryType";
 import { currentUser } from "@clerk/nextjs/server";
 import { eq } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
@@ -11,7 +12,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const stories = await db
+  const stories: storyTable[] = await db
     .select()
     .from(storysTable)
     .where(eq(storysTable.email, user.primaryEmailAddress?.emailAddress!));
