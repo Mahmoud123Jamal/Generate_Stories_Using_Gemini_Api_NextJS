@@ -13,11 +13,19 @@ function AuthProvider({ children }: providerProps) {
     }
   }, [user]);
   const createUser = async () => {
-    const res = await axios.post("/api/users", {
-      name: user?.fullName,
-      email: user?.primaryEmailAddress?.emailAddress,
-    });
-    console.log(res.data);
+    const email = user?.primaryEmailAddress?.emailAddress;
+    const name = user?.fullName || user?.firstName || "User";
+
+    if (!email) return;
+    try {
+      const res = await axios.post("/api/users", {
+        name: user?.fullName,
+        email: user?.primaryEmailAddress?.emailAddress,
+      });
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return <div>{children}</div>;
 }
