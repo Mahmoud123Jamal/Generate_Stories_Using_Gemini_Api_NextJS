@@ -1,3 +1,6 @@
+import { storyFilterSchema } from "@/lib/validators";
+import * as yup from "yup";
+
 export const STORY_TYPES = [
   {
     key: "story book",
@@ -53,3 +56,5 @@ export type previewStory = Omit<Story, "content" | "id" | "email"> & {
     };
   };
 } & StoryFormValues;
+
+export type StoryFilterValues = yup.InferType<typeof storyFilterSchema>;
