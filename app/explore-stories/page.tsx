@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FiBookOpen, FiArrowRight, FiCompass } from "react-icons/fi";
@@ -14,21 +14,21 @@ function ExploreStories() {
   const [stories, setStories] = useState<previewStory[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
-  useEffect(() => {
-    getAllStories();
-  }, []);
-
-  const getAllStories = async () => {
+  const getAllStories = useCallback(async () => {
     try {
       setLoading(true);
-      const res = await axios.get("/api/all-stories");
+      const res = await axios.get(`/api/all-stories?t=${Date.now()}`);
       setStories(res.data);
     } catch (error) {
       console.error("Error fetching all stories:", error);
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    getAllStories();
+  }, [getAllStories]);
 
   if (loading) return <Loader />;
 
@@ -36,7 +36,6 @@ function ExploreStories() {
     <>
       <Header />
       <div className="min-h-screen p-5 md:px-10 lg:px-20 bg-gray-50">
-        {/* Header */}
         <div className="flex justify-between items-center mb-10 mt-5">
           <div>
             <h1 className="text-3xl md:text-4xl font-extrabold text-orange-600 flex items-center gap-3">
@@ -55,7 +54,6 @@ function ExploreStories() {
             </p>
           </div>
         ) : (
-          /* Grid Layout */
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-10">
             {stories.map((story) => (
               <div
@@ -63,7 +61,6 @@ function ExploreStories() {
                 className="card bg-base-100 shadow-xl border border-gray-100 hover:shadow-2xl transition-all cursor-pointer group"
                 onClick={() => router.push(`/story/${story.storyId}`)}
               >
-                {/* Figure / Image Section */}
                 <figure className="relative h-56 w-full overflow-hidden bg-orange-50">
                   {story.imageUrl ? (
                     <Image
@@ -84,7 +81,6 @@ function ExploreStories() {
                   </div>
                 </figure>
 
-                {/* Content Section */}
                 <div className="card-body p-5">
                   <h2 className="card-title text-xl font-bold text-gray-800 truncate">
                     {story.content?.story?.title}
@@ -99,7 +95,6 @@ function ExploreStories() {
                     </p>
                   </div>
 
-                  {/* Card Actions */}
                   <div className="card-actions justify-end mt-4 border-t pt-4">
                     <button className="flex items-center gap-2 text-orange-600 font-bold group-hover:gap-4 transition-all">
                       Read Story <FiArrowRight />
