@@ -39,7 +39,7 @@ function StoryForm() {
 
       if (response.ok) {
         console.log("Story generated:", result);
-        router.push("/storys");
+        router.push("/dashboard/my-stories");
       } else {
         console.error("Server Error:", result);
         alert("Error generating story: " + (result.error || "Unknown error"));
