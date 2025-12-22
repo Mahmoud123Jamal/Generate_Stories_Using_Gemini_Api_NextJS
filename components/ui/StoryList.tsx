@@ -88,7 +88,7 @@ function StoryList() {
               <div
                 key={story.storyId}
                 className="card bg-base-100 shadow-xl border border-gray-100 hover:shadow-2xl transition-all cursor-pointer group"
-                onClick={() => router.push(`/story?storyId=${story.storyId}`)}
+                onClick={() => router.push(`/story/${story.storyId}`)}
               >
                 <figure className="relative h-56 w-full overflow-hidden bg-orange-50">
                   {story.imageUrl ? (
