@@ -19,3 +19,9 @@ export const storySchema = yup.object({
     .oneOf(AGE_GROUPS, "Invalid age group")
     .required("Age group is required"),
 });
+
+export const storyFilterSchema = yup.object({
+  searchTerm: yup.string().default(""),
+  ageGroups: yup.array().of(yup.string()).default([]),
+  storyTypes: yup.array().of(yup.string()).default([]),
+});
