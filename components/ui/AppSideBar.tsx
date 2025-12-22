@@ -5,7 +5,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FiSettings, FiFeather } from "react-icons/fi";
 import { MdOutlineAutoStories, MdOutlineDashboard } from "react-icons/md";
-import { TbLayoutSidebarRightExpandFilled } from "react-icons/tb";
+import {
+  TbHomeBitcoin,
+  TbLayoutSidebarRightExpandFilled,
+} from "react-icons/tb";
 
 const navItems = [
   {
@@ -15,13 +18,19 @@ const navItems = [
     tooltip: "Dashboard",
   },
   {
-    href: "/stories",
+    href: "/",
+    label: "Home",
+    Icon: TbHomeBitcoin,
+    tooltip: "Home",
+  },
+  {
+    href: "/dashboard/my-stories",
     label: "My Stories",
     Icon: MdOutlineAutoStories,
     tooltip: "My Stories",
   },
   {
-    href: "/settings",
+    href: "/dashboard/settings",
     label: "Settings",
     Icon: FiSettings,
     tooltip: "Settings",
@@ -30,6 +39,7 @@ const navItems = [
 const titles: Record<string, string> = {
   "/dashboard": "Dashboard",
   "/dashboard/add-new-story": "Create Story",
+  "/dashboard/my-stories": "My Stories",
 };
 type AppSideBarProps = {
   children: React.ReactNode;
@@ -63,7 +73,7 @@ function AppSideBar({ children }: AppSideBarProps) {
         <div>{children}</div>
       </div>
       {/* sidebar */}
-      <div className="drawer-side is-drawer-close:overflow-visible">
+      <div className="h-full drawer-side is-drawer-close:overflow-visible">
         <label
           htmlFor="my-drawer-4"
           aria-label="close sidebar"
@@ -82,7 +92,7 @@ function AppSideBar({ children }: AppSideBarProps) {
 
           <div className="p-4 w-full">
             <Link
-              href="/create-story"
+              href="/dashboard/add-new-story"
               className="btn btn-warning w-full is-drawer-close:btn-square is-drawer-close:tooltip is-drawer-close:tooltip-right"
               data-tip="Generate Story"
             >
