@@ -28,13 +28,13 @@ function LandingPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/create-story"
+              href="/dashboard/add-new-story"
               className="btn btn-primary btn-lg bg-orange-500 hover:bg-orange-600 text-white border-none px-8 py-3 text-lg"
             >
               Start Creating Stories
             </Link>
             <Link
-              href="/explore-story"
+              href="/explore-stories"
               className="btn btn-outline btn-lg border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white px-8 py-3 text-lg"
             >
               Explore Stories
@@ -51,10 +51,10 @@ function LandingPage() {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="card bg-blue-50 shadow-lg hover:shadow-xl transition-shadow">
               <div className="card-body text-center">
-                <div className="text-6xl mb-4">
+                <div className="text-6xl mb-4 text-orange-600 ">
                   <FaMagic />
                 </div>
-                <h3 className="card-title text-xl text-gray-800">
+                <h3 className="card-title text-xl text-orange-500">
                   AI-Powered Magic
                 </h3>
                 <p className="text-gray-600">
@@ -65,10 +65,10 @@ function LandingPage() {
             </div>
             <div className="card bg-blue-50 shadow-lg hover:shadow-xl transition-shadow">
               <div className="card-body text-center">
-                <div className="text-6xl mb-4">
+                <div className="text-6xl mb-4 text-orange-600">
                   <FaBook />
                 </div>
-                <h3 className="card-title text-xl text-gray-800">
+                <h3 className="card-title text-xl text-orange-500">
                   Educational Fun
                 </h3>
                 <p className="text-gray-600">
@@ -79,10 +79,10 @@ function LandingPage() {
             </div>
             <div className="card bg-green-50 shadow-lg hover:shadow-xl transition-shadow">
               <div className="card-body text-center">
-                <div className="text-6xl mb-4">
+                <div className="text-6xl mb-4 text-orange-600">
                   <IoCreate />
                 </div>
-                <h3 className="card-title text-xl text-gray-800">
+                <h3 className="card-title text-xl text-orange-500">
                   Instant Creation
                 </h3>
                 <p className="text-gray-600">
