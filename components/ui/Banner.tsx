@@ -27,7 +27,7 @@ function Banner() {
             exciting adventure just for you.
           </p>
 
-          <Link href="/create-story">
+          <Link href="/dashboard/add-new-story">
             <button className="btn btn-warning btn-lg shadow-xl hover:bg-yellow-500 transition-all duration-300">
               <FiZap className="w-6 h-6 mr-2" />
               Start Your Story Now!
