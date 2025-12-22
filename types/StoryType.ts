@@ -35,8 +35,6 @@ export type Story = {
   email: string | null;
 };
 
-export type storyTable = StoryFormValues & Story;
-
 export type previewStory = Omit<Story, "content" | "id" | "email"> & {
   content: {
     story: {
