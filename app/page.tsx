@@ -1,6 +1,7 @@
 import Header from "@/components/layouts/Header";
 import Loading from "@/app/loading";
 import dynamic from "next/dynamic";
+import Footer from "@/components/layouts/Footer";
 
 export default function Home() {
   const LandingPage = dynamic(() => import("@/components/ui/LandingPage"), {
@@ -10,6 +11,7 @@ export default function Home() {
     <div>
       <Header />
       <LandingPage />
+      <Footer />
     </div>
   );
 }

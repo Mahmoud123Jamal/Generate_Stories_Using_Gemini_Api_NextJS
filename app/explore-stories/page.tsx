@@ -8,6 +8,7 @@ import axios from "axios";
 import { previewStory } from "@/types/StoryType";
 import Loader from "@/components/ui/loader";
 import Header from "@/components/layouts/Header";
+import Footer from "@/components/layouts/Footer";
 
 function ExploreStories() {
   const router = useRouter();
@@ -106,6 +107,7 @@ function ExploreStories() {
           </div>
         )}
       </div>
+      <Footer />
     </>
   );
 }
