@@ -25,3 +25,22 @@ export const storyFilterSchema = yup.object({
   ageGroups: yup.array().of(yup.string()).default([]),
   storyTypes: yup.array().of(yup.string()).default([]),
 });
+
+export const contactSchema = yup.object({
+  name: yup
+    .string()
+    .min(3, "Name must be at least 3 characters")
+    .required("Name is required"),
+  email: yup
+    .string()
+    .email("Invalid email address")
+    .required("Email is required"),
+  subject: yup
+    .string()
+    .min(5, "Subject is too short")
+    .required("Subject is required"),
+  message: yup
+    .string()
+    .min(10, "Message must be at least 10 characters")
+    .required("Message is required"),
+});
