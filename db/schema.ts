@@ -1,4 +1,11 @@
-import { integer, json, pgTable, varchar } from "drizzle-orm/pg-core";
+import {
+  integer,
+  json,
+  pgTable,
+  text,
+  timestamp,
+  varchar,
+} from "drizzle-orm/pg-core";
 
 export const usersTable = pgTable("users", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
@@ -17,4 +24,13 @@ export const storysTable = pgTable("storys", {
   imageUrl: varchar("imageUrl", { length: 500 }).default(""),
   content: json("content"),
   email: varchar("email", { length: 255 }).references(() => usersTable.email),
+});
+
+export const contactMessagesTable = pgTable("contact_messages", {
+  id: integer().primaryKey().generatedAlwaysAsIdentity(),
+  name: varchar("name", { length: 255 }).notNull(),
+  email: varchar("email", { length: 255 }).notNull(),
+  subject: varchar("subject", { length: 255 }).notNull(),
+  message: text("message").notNull(),
+  createdAt: timestamp("created_at").defaultNow(),
 });
