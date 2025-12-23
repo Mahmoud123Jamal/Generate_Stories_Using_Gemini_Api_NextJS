@@ -4,7 +4,7 @@ import { currentUser } from "@clerk/nextjs/server";
 import { NextRequest, NextResponse } from "next/server";
 import uuid4 from "uuid4";
 import OpenAI from "openai";
-import { storyPrompt } from "@/lib/storyPrompt";
+import { storyPrompt } from "@/lib/prompts/storyPrompt";
 import axios from "axios";
 
 export async function POST(req: NextRequest) {
